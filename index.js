@@ -45,11 +45,22 @@ app.get("/qs", (req) => {
 
 app.post("/hello", () => {
     console.log("/hello post 요청");
-})
+});
 
 app.post("/post-req", (req) => {
     console.log(req.body);
     console.log(req.body.name);
     const { name, age } = req.body;
     console.log(`name: ${name}, age: ${age}`);
-})
+});
+
+app.post("/save", (req) => {
+    const { name, capital, population } = req.body;
+    console.log(`name: ${name}, capital: ${capital}, population: ${population}`);
+    const sql = "insert into nations_table(name, capital, population) values(?,?,?)";
+    db.query(sql, [name, capital, population], (err, results, fields) => {
+        console.log("err", err);
+        console.log("results", results);
+        console.log("fields", fields);
+    })
+});

@@ -27,4 +27,6 @@ create table nations_table(
     capital varchar(20),
     population int
     );
+
+insert into nations_table(name, captial, population) values(?,?,?);
 ```
