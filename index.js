@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express()
 
-app.use(express.urlencoded({extended: true}))
+// json 데이터 받기 위해
 app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 
 // 서버포트: 8000
 // localhost:8000
@@ -26,3 +27,14 @@ app.get("/qs", (req) => {
     console.log(req.query.p1);
     console.log(req.query.p2);
 });
+
+app.post("/hello", () => {
+    console.log("/hello post 요청");
+})
+
+app.post("/post-req", (req) => {
+    console.log(req.body);
+    console.log(req.body.name);
+    const { name, age } = req.body;
+    console.log(`name: ${name}, age: ${age}`);
+})
