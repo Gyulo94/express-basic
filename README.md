@@ -12,3 +12,19 @@ npm install [dependency 이름]
 # api 테스트
 - postman
 - REST Client (vs code extension)
+
+```
+create database db_codingrecipe;
+create user user_codingrecipe@localhost identified by '1234';
+grant all privileges on db_codingrecipe.* to user_codingrecipe@localhost;
+```
+- 사용할 table
+```
+drop table if exists nations_table;
+create table nations_table(
+	id bigint auto_increment primary key,
+    name varchar(20),
+    capital varchar(20),
+    population int
+    );
+```

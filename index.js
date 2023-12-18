@@ -1,9 +1,24 @@
 const express = require('express');
+const mysql = require('mysql');
 const app = express()
 
 // json 데이터 받기 위해
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+
+// db 접속 정보
+const db = mysql.createConnection({
+    host: "127.0.0.1",
+    user: "gyulo94",
+    password: "q1w2e3",
+    port: "3306",
+    database: "db_codingrecipe"
+});
+
+db.connect(err => {
+    console.log('db 연결 성공!!');
+    console.log('err', err);
+})
 
 // 서버포트: 8000
 // localhost:8000
